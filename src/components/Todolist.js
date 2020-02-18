@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import Storage from '../model/storage'
 class Todolist extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +27,7 @@ class Todolist extends Component {
     }
     addData=(e)=>{
         //按下回车的时候增加
-        if(e.keyCode==13){
+        if(e.keyCode===13){
             let title=this.refs.title.value;
             let templist=this.state.list;
             templist.push({
@@ -39,6 +40,9 @@ class Todolist extends Component {
             });
             //表单置为空
             this.refs.title.value="";
+            //执行缓存数据
+            // sessionStorage.setItem('todolist',JSON.stringify(templist))
+            Storage.set('todolist',templist)
         }
     }
     checkboxChange=(key)=>{
@@ -47,6 +51,9 @@ class Todolist extends Component {
         this.setState({
             list:templist
         });
+        //执行缓存数据
+        // sessionStorage.setItem('todolist',JSON.stringify(templist))
+        Storage.set('todolist',templist)
     }
     removeData=(key)=>{
         let templist=this.state.list;
@@ -54,12 +61,26 @@ class Todolist extends Component {
         this.setState({
             list:templist
         });
+        //执行缓存数据 
+        // sessionStorage.setItem('todolist',JSON.stringify(templist))
+        Storage.set('todolist',templist)
+    }
+    //生命周期函数,页面加载就会触发
+    componentDidMount(){
+        //获取缓存数据
+        // var todolist=JSON.parse(sessionStorage.getItem('todolist'));
+        let todolist=Storage.get('todolist')
+        if(todolist){
+            this.setState({
+                list:todolist
+            });
+        }
     }
     render() {
         return (
             <div>
                 <h2>React Todolist演示</h2>
-                <input ref='title' onKeyUp={this.addData} />
+                <input ref='title' onKeyUp={this.addData} placeholder="添加todo" />
                 <h2>待办事项</h2>
                 <hr/>
                 <ul>
@@ -67,14 +88,13 @@ class Todolist extends Component {
                         this.state.list.map((value,key)=>{
                             if(!value.checked){
                                 return(
-                                    <li>
+                                    <li key={key}>
                                         <input type="checkbox"  checked={value.checked} onChange={this.checkboxChange.bind(this,key,value)} />
                                         {value.title}
                                         -- <button onClick={this.removeData.bind(this,key)}>删除</button>
                                     </li>
                                 )
                             }
-                            
                         })
                     }
                 </ul>
@@ -84,14 +104,13 @@ class Todolist extends Component {
                         this.state.list.map((value,key)=>{
                             if(value.checked){
                                 return(
-                                    <li>
+                                    <li key={key}>
                                         <input type="checkbox"  checked={value.checked} onChange={this.checkboxChange.bind(this,key,value)} />
                                         {value.title}
                                         -- <button onClick={this.removeData.bind(this,key)}>删除</button>
                                     </li>
                                 )
                             }
-                            
                         })
                     }
                 </ul>
