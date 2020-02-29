@@ -1,5 +1,5 @@
-import React,{Component} from 'react';
-class home extends Component {
+import React, { Component } from 'react';
+class list extends Component {
     constructor(props) {
         super(props);
         this.state = {  };
@@ -7,10 +7,10 @@ class home extends Component {
     render() {
         return (
             <div>
-                <h2>我是home</h2>
+                <h2>我是list</h2>
             </div>
         );
     }
 }
 
-export default home;
+export default list;

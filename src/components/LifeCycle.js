@@ -60,21 +60,26 @@ class Lifecycle extends Component {
 
     //组件将要挂载的时候触发的生命周期函数
     UNSAFE_componentWillMount() {
-        let testa = {
-            age: 18,
-            name: 'aaa',
-            city:{
-                address:"金陵"
-            }
-        }
-        let testb= testa;
-        testb.age=20;
-        console.log(testa);
-        console.log(testb)
+        // let testa = {
+        //     age: 18,
+        //     name: 'aaa',
+        //     city:{
+        //         address:"金陵"
+        //     }
+        // }
+        // let testb= testa;
+        // testb.age=20;
+        // console.log(testa);
+        // console.log(testb)
         // let testc={...testa,...testb}
         //等同于
         //let cc = Object.assign({}, aa, bb);
         // console.log(testc) 
+        let srcObj = { 'name': '明', grade: { 'chi': '50', 'eng': '50' } };
+        let copyObj2 = Object.assign({}, srcObj);
+        copyObj2.name = '红';
+        copyObj2.grade.chi = '60';
+        console.log('新 objec srcObj', srcObj);
         console.log('02组件将要挂载');
     }
     //组件挂载完成的时候触发的生命周期函数
