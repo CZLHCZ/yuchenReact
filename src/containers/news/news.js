@@ -1,16 +1,15 @@
 import React,{Component} from 'react';
-class home extends Component {
+
+class news extends Component {
     constructor(props) {
         super(props);
         this.state = {  };
     }
     render() {
         return (
-            <div>
-                <h2>我是主页组件</h2>
-            </div>
+            <div>我是新闻组件</div>
         );
     }
 }
 
-export default home;
+export default news;

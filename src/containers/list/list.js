@@ -7,7 +7,7 @@ class list extends Component {
     render() {
         return (
             <div>
-                <h2>我是list</h2>
+                <h2>我是列表组件</h2>
             </div>
         );
     }

@@ -8,32 +8,46 @@ import {
   Link
 } from "react-router-dom";
 import Home from "./containers/home/home";
-import List from "./components/list/list"
+import List from "./containers/list/list"
 const routes = [
   {
     path: "/home",
-    component: Sandwiches
+    component: Home
   },
   {
-    path: "/tacos",
-    component: Tacos,
-    routes: [
-      {
-        path: "/tacos/bus",
-        component: Bus
-      },
-      {
-        path: "/tacos/cart",
-        component: Cart
-      }
-    ]
+    path: "/list",
+    component: List,
+    // routes: [
+    //   {
+    //     path: "/tacos/bus",
+    //     component: Bus
+    //   },
+    //   {
+    //     path: "/tacos/cart",
+    //     component: Cart
+    //   }
+    // ]
   }
 ];
 function App() {
   return (
-    <div className="App">
-      <Home/>
-    </div>
+    <Router>
+      <div>
+        {/* <ul>
+          <li>
+            <Link to="/home">home</Link>
+          </li>
+          <li>
+            <Link to="/list">list</Link>
+          </li>
+        </ul> */}
+
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/list" component={List}></Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
