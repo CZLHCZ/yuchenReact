@@ -9,26 +9,26 @@ import {
 } from "react-router-dom";
 import Home from "./containers/home/home";
 import List from "./containers/list/list"
-const routes = [
-  {
-    path: "/home",
-    component: Home
-  },
-  {
-    path: "/list",
-    component: List,
-    // routes: [
-    //   {
-    //     path: "/tacos/bus",
-    //     component: Bus
-    //   },
-    //   {
-    //     path: "/tacos/cart",
-    //     component: Cart
-    //   }
-    // ]
-  }
-];
+// const routes = [
+//   {
+//     path: "/home",
+//     component: Home
+//   },
+//   {
+//     path: "/list",
+//     component: List,
+//     // routes: [
+//     //   {
+//     //     path: "/tacos/bus",
+//     //     component: Bus
+//     //   },
+//     //   {
+//     //     path: "/tacos/cart",
+//     //     component: Cart
+//     //   }
+//     // ]
+//   }
+// ];
 function App() {
   return (
     <Router>
